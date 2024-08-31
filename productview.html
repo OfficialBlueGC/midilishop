@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hustle T-Shirt</title>
+    <link rel="icon" href="img/logo.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+
+body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        a{
+            color: blue;
+            text-decoration: none;
+        }
+
+        header {
+            transition: 0.2s;
+            padding: 15px 20px;
+            color: black;
+            display: flex;
+            background-color: white;
+            align-items: center;
+            justify-content: space-between;
+            top: 0px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: -10px;
+        }
+
+        ::selection{
+            color: white;
+            background-color: #ff9900;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+            scale: 1.5;
+        }
+
+        .brand img{
+            width: 50px;
+            margin: 0 20px;
+        }
+        .brand i {
+            margin-right: 10px;
+            font-size: 1.8em;
+            color: #ff9900;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            padding: 10px 20px;
+            transition:  0.25s ease-out;
+        }
+        nav a:hover{
+            color: #ff9900;
+        }
+
+        nav a::after {
+            content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff9900;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .icons i {
+            color: black;
+            margin: 0 10px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .icons i:hover {
+            color: #ff9900;
+        }
+
+        .search-bar {
+            border: 1px solid rgba(0, 0, 0, 0.39);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .search-bar input {
+            background: none;
+            border: none;
+            padding: 5px 10px;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #ff9900;
+            border: none;
+            padding: 7px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #111;
+            transition: background 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #ffc107;
+        }
+        
+        .container {
+            display: flex;
+            width: 40%;
+            height: 80%;
+            padding: 60px;
+        }
+        .image-nav {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+        .image-nav img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border: 5px solid #ff990000;
+            transition: 0.1s ease;
+        }
+        .image-nav img.active {
+            border: 5px solid #ff9900;
+        }
+        .main-image img {
+            width: 400px;
+            height: auto;
+            cursor: pointer;
+        }
+        .details {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .details h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .details p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .sizes {
+            display: flex;
+            gap: 13px;
+            margin-bottom: 20px;
+            z-index: 0;
+        }
+        .sizes .size-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            transition: 0.1s;
+            user-select: none;
+            position: relative;
+        }
+        .size-btn:hover{
+            border: 2px solid #ff9900; 
+        }
+
+                
+        .size-btn::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: calc(100% + 12px);
+            height: calc(100% + 12px);
+            border: 2px solid transparent;
+            box-sizing: border-box;
+            z-index: -1;
+            transition: all 0.3s ease;
+            border-radius: 0px;
+            scale: 1.1;
+            border-radius: 30px;
+        }
+
+        .size-btn:hover::before {
+            border-color: #ff9900;
+            scale: 1;
+        }
+
+        .size-btn.active::before {
+            border: 2px solid #ff9900;
+            scale: 1.05;
+        }
+
+        .size-btn:hover.active::before {
+            border: 2px solid #ff9900;
+        }
+
+
+
+        .sizes .size-btn.active {
+            background-color: #ff9900;
+            border: 2px solid #b86e0000;
+            color: #fff;
+            scale: 1.05;
+        }
+        .price, .policy {
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .atc, .bn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border: 1px solid #ff9900;
+            background-color: #ff9900;
+            color: white;
+            transition: 0.2s;
+        }
+        .atc::selection{
+            background-color: white;
+            color: #ff9900;
+        }
+        .atc:hover {
+            border: 1px solid #da8300;
+            background-color: #da8300;
+        }
+
+        .bn{
+            background-color: transparent;
+            border: 1px solid #ff9900;
+            color: black;
+        }
+
+        .bn:hover{
+            border: 1px solid #ff9900;
+            background-color: #ff9900;
+            color: white;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.177);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+            display: flex;
+            border-top: 6px solid #ff9900;
+        }
+        .modal-content img {
+            width: 600px;
+            height: auto;
+        }
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+        .modal .image-nav {
+            display: flex;
+        }
+        .modal .image-nav img {
+            display: flex;
+            width: 60px;
+            height: 60px;
+            margin: 0 10px;
+            border: 3px solid #ff990000;
+            cursor: pointer;
+        }
+        .modal .image-nav img.active {
+            border: 3px solid #ff9900;
+        }
+        .saletag{
+            background-color: #ff990050;
+            border: 1px solid #ff9900;
+            padding: 2px 5px;
+            font-size: 16px;
+        }
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: -10px;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .footer .column {
+            padding: 10px;
+            min-width: 200px;
+        }
+
+        .footer .column h3 {
+            border-bottom: 1px solid #77777700;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .link {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            text-align: left;
+            transition: 0.2s ease-in-out;
+            border-left: 1px solid rgba(255, 255, 255, 0);
+        }
+
+        .link:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+            border-left: 3px solid #ff9900;
+        }
+
+        .link span{
+            margin-left: 0px;
+            transition: 0.2s ease-in-out;
+            color: white;
+        }
+
+        .link:hover span{
+            margin-left: 8px;
+            color: #ff9900;
+        }
+
+        .footer .brand2 {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: center;
+        }
+
+        .footer .brand2 img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .footer .social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .social2{
+            transition: 0.2s ease-in;
+        }
+
+        .social2:hover{
+            scale: 1.1;
+        }
+
+        .footer .social img {
+            height: 30px;
+            margin: 0 10px;
+        }
+
+        .footer .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+        .prlink{
+            text-decoration: none;
+            color: blue;
+            border-bottom: 1px solid blue;
+            padding-bottom: 2px;
+            transition: 0.1s;
+
+        }
+
+        .prlink:hover{
+            color: navy;
+            border-bottom: 1px solid navy;
+            padding-bottom: 3px;
+        }
+
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+            z-index: 999;
+        }
+
+        .dialog-box {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border-top: 6px solid #ff9900;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+
+        .dialog-box h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #333;
+            margin: 0;
+        }
+
+        .dialog-box p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .dialog-box .btn-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dialog-box button {
+            padding: 10px 20px;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .dialog-box button.sign-in-btn {
+            background-color: #ff9900;
+            color: white;
+        }
+        
+        .dialog-box button.sign-in-btn::selection{
+            background-color: white;
+            color: #ff9900;
+        }
+
+        .dialog-box button.cancel-btn {
+            background-color: black;
+            color: white;
+        }
+
+        .dialog-box button:hover {
+            opacity: 0.9;
+        }
+
+        .dialog-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .quant{
+            padding: 10px 30px;
+            margin-left: 5px;
+            border: 1px solid black;
+            background-color: transparent;
+            appearance: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .quant:focus{
+            border: 1px solid #ff9900;
+        }
+
+        .coupon{
+            background-color: transparent;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            display: inline-block;
+            padding: 12px;
+            text-align: left;
+            transition: 0.2s ease;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .coupon:disabled{
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: transparent;
+            border: 2px solid #ccc;
+        }
+
+        .coupon:hover{
+            border: 2px solid #ff9900;
+            color: #ff9900;
+        }
+
+        
+        .coupon::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: calc(100% + 12px);
+            height: calc(100% + 12px);
+            border: 2px solid transparent;
+            box-sizing: border-box;
+            z-index: -1;
+            transition: all 0.3s ease;
+            border-radius: 0px;
+            scale: 1.05;
+        }
+
+        .coupon:hover::before {
+            border-color: #ff9900;
+            scale: 1;
+        }
+
+
+        .couponheader{
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .coupon .couponheader span{
+            font-weight: normal;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .coupon:hover .couponheader span{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="headerr">
+        <div class="brand">
+            <img src="img/logo.PNG">
+        </div>
+
+        <nav>
+            <a href="#">Newly Added</a>
+            <a href="#">Flash Deals</a>
+            <a href="#">Products</a>
+            <a href="#">Sale</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Blog</a>
+        </nav>
+
+        <div class="icons">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search" style="color: white;"></i></button>
+            </div>
+            <i class="fas fa-user"></i>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </header>
+
+
+    <div class="dialog-overlay" id="signInDialog">
+        <div class="dialog-box">
+            <h2>Not Signed In</h2>
+            <p>To add items to the cart, you must sign in first.</p>
+            <div class="btn-container">
+                <button class="sign-in-btn" onclick="openLoginPage()">Sign In</button>
+                <button class="cancel-btn" onclick="hideDialog()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-overlay" id="repolicyDialog">
+        <div class="dialog-box" style="text-align: left; width: 700px; height: auto; max-height: 90%; overflow-y: auto;">
+            <h2>Return & Return Policy</h2>
+            <p><strong>Last Updated</strong> 28 - Aug - 2024</p>
+            <h3>1. Return Eligibility</h3>
+            <p>Thank you for shopping with MIDILI.EG. We value your satisfaction and strive to ensure that you are happy with every purchase. However, we understand that sometimes a product may not meet your expectations, and you may wish to return it. Please read our Return & Refund Policy carefully to understand your rights and obligations.</p>
+            <h3>2. Non-Returnable Items</h3>
+            <p><strong>Time Frame:</strong> You may return your purchased items within 2 days from the date of purchase.</p>
+            <p><strong>Condition of the Item:</strong> The item must be in its original condition, unused, unwashed, and undamaged. All tags, labels, and packaging must be intact.</p>
+            <h3>3. Return Process</h3>
+            <p><strong>Refund Amount:</strong> If your return is approved, you will be eligible to receive <strong>75% of the original purchase price.</strong> The refund will be processed within 1-10 days after we receive and inspect the returned item(s).</p>
+            <h3>5. Exchanges</h3>
+            <p>We do not offer direct exchanges. If you would like a different size, color, or style, please return the original item(s) for a refund and place a new order for the desired item.</p>
+            <h3>6. Final Considerations</h3>
+            <p><strong>Policy Changes:</strong> We reserve the right to update or modify this Return & Refund Policy at any time without prior notice. Please review the policy periodically to stay informed of any changes.</p>
+            <p style="margin-top: 20px; color: #ff9900;">Thank you for choosing MIDILI.EG. We appreciate your business and are committed to providing you with the best possible online shopping experience.</p>
+            <div class="btn-container">
+                <button class="sign-in-btn" onclick="hideDialog2()">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-overlay" id="couponDialog">
+        <div class="dialog-box" style="text-align: left; width: 500px; height: auto; max-height: 90%; overflow-y: auto;">
+            <h2>Coupons & Discounts</h2>
+            <p><strong>2</strong> Coupons</p>
+            <div class="coupon"  style="display: block;">
+                <h4 class="couponheader">25% Off Offer <span>Redeem</span></h4>
+                <p style="margin: 0; margin-top: 6px;">1 Use, First Purchase get 25% Off your order</p>
+                <p style="margin: 0; color: #ff9900;">1 Use Left</p>
+            </div>
+            <div class="coupon" style="display: block;">
+                <h4 class="couponheader">Free Delivery <span>Redeem</span></h4>
+                <p style="margin: 0; margin-top: 6px;">1 Use, First Purchase get free delivery on your order</p>
+                <p style="margin: 0; color: #ff9900;">1 Use Left</p>
+            </div>
+            <div class="btn-container">
+                <button class="sign-in-btn">Use</button>
+                <button class="cancel-btn" onclick="hideDialog3()">Cancel</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    
+<div class="container">
+    <div class="image-nav">
+        <img src="img/tshirthustle.jpg" alt="Image 1" class="active" onclick="changeImage('img/tshirthustle.jpg')">
+        <img src="img/BCH.jpg" alt="Image 2" onclick="changeImage('img/BCH.jpg')">
+        <img src="image3.jpg" alt="Image 3" onclick="changeImage('image3.jpg')">
+        <img src="image4.jpg" alt="Image 4" onclick="changeImage('image4.jpg')">
+    </div>
+    <div class="main-image">
+        <img src="img/tshirthustle.jpg" alt="Main Image" id="mainImage" onclick="openModal()">
+    </div>
+    <div class="details">
+        <h1>Hustle </h1>
+        <p>Test Description.</p>
+        <p><strong>Cloth Type:</strong> Cotton</p>
+        <div class="sizes">
+            <div class="size-btn" onclick="selectSize(this)">SM</div>
+            <div class="size-btn" onclick="selectSize(this)">S</div>
+            <div class="size-btn active" onclick="selectSize(this)">M</div>
+            <div class="size-btn" onclick="selectSize(this)">L</div>
+            <div class="size-btn" onclick="selectSize(this)">XL</div>
+            <div class="size-btn" onclick="selectSize(this)">XXL</div>
+        </div>
+        <div class="coupon" onclick="showDialog3()">
+            <h4 style="margin: 0;">25% Off Offer & 1 Other</h4>
+            <p style="margin: 0; margin-top: 6px;">See more...</p>
+        </div>
+        <div class="price">
+            <h2>350 EGP <span class="saletag">25% Off first order</span></h2>
+        </div>
+        <label for="nump">Quantity</label>
+        <select id="nump" class="quant">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+        </select>
+        <div class="policy">
+            <p><strong>Refunds & Return Policy:</strong> This item is returnable within 2 days of purchase & must follow our <a href="#" class="prlink" onclick="showDialog2()">Return Policy</a></p>
+            <p><strong>Delivery:</strong>  Please note that delivery charges vary based on your location. The exact cost will be determined by the distance, and we will apply a fair and appropriate fee for the delivery.</p>
+        </div>
+        <div class="buttons">
+            <button class="atc"  onclick="showDialog()">Add to Cart</button>
+            <button class="bn">Buy Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="image-nav">
+            <img src="img/tshirthustle.jpg" alt="Image 1" class="active" onclick="changeModalImage('img/tshirthustle.jpg')">
+            <img src="img/BCH.jpg" alt="Image 2" onclick="changeModalImage('img/BCH.jpg')">
+            <img src="image3.jpg" alt="Image 3" onclick="changeModalImage('image3.jpg')">
+            <img src="image4.jpg" alt="Image 4" onclick="changeModalImage('image4.jpg')">
+        </div>
+        <img src="image1.jpg" alt="Enlarged Image" id="modalImage">
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="container">
+        <div class="column brand2">
+            <img src="img/bgcWhite.png" style="transform: translateY(-5PX);" alt="Brand Icon">
+            <h1>Blue GC</h1>
+        </div>
+        <div class="column">
+            <h3>MIDILI.EG</h3>
+            <a href="#" class="link"><span>MIDILI Shop</span></a>
+            <a href="#" class="link"><span>Flash Deals</span></a>
+            <a href="#" class="link"><span>New Arrivals</span></a>
+            <a href="#" class="link"><span>Contact us</span></a>
+            <a href="#" class="link"><span>Privacy Policy</span></a>
+            <a href="#" class="link"><span>Terms of Service</span></a>
+            <a href="#" class="link"><span>About</span></a>
+        </div>
+        <div class="column">
+            <h3>Blue GC</h3>
+            <a href="#" class="link"><span>About us</span></a>
+            <a href="#" class="link"><span>Games</span></a>
+            <a href="#" class="link"><span>Apps</span></a>
+            <a href="#" class="link"><span>Partners</span></a>
+            <a href="#" class="link"><span>Contact us</span></a>
+        </div>
+        <div class="column">
+            <h3>Blue GC Support</h3>
+            <a href="#" class="link"><span>Support</span></a>
+            <a href="#" class="link"><span>Playtest</span></a>
+            <a href="#" class="link"><span>Privacy Policy</span></a>
+            <a href="#" class="link"><span>Terms of Use</span></a>
+            <a href="#" class="link"><span>Fan-Created Content</span></a>
+        </div>
+    </div>
+    <div class="column social">
+        <a href="#" class="social2"><img src="img/insta.png" alt="Instagram"></a>
+        <a href="#" class="social2"><img src="img/tiktok.png" alt="Tiktok"></a>
+    </div>
+    <div class="copyright">
+        &copy; 2019 - 2024 Blue GC. 2024 MIDILI.EG is not a trademark or a product made by Blue GC. All Rights Reserved
+        <h3>Powered by <a href="shop.bluegc.com" style="color: rgb(43, 43, 255); pointer-events: none; cursor: pointer;">Blue GC Shop</a> (Unreleased)</h3>
+    </div>
+</div>
+
+<script>
+    function openLoginPage() {
+        window.location.href = 'signin.html';
+    }
+
+    function changeImage(imageSrc) {
+        document.getElementById('mainImage').src = imageSrc;
+        const images = document.querySelectorAll('.image-nav img');
+        images.forEach(img => img.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+
+    function openModal() {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = 'flex';
+        const topbar = document.getElementById('headerr');
+        topbar.style.marginTop = '-100px';
+        topbar.style.opacity = '0';
+        topbar.style.zIndex = '0';
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = document.getElementById('mainImage').src;
+        const modalImages = document.querySelectorAll('.modal .image-nav img');
+        modalImages.forEach(img => img.classList.remove('active'));
+        modalImages[0].classList.add('active');
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        const topbar = document.getElementById('headerr');
+        topbar.style.marginTop = '-5px';
+        topbar.style.opacity = '1';
+        topbar.style.zIndex = '1000';
+        modal.style.display = 'none';
+    }
+
+    function changeModalImage(imageSrc) {
+        document.getElementById('modalImage').src = imageSrc;
+        const modalImages = document.querySelectorAll('.modal .image-nav img');
+        modalImages.forEach(img => img.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+
+    function selectSize(sizeBtn) {
+        const sizeButtons = document.querySelectorAll('.sizes .size-btn');
+        sizeButtons.forEach(btn => btn.classList.remove('active'));
+        sizeBtn.classList.add('active');
+    }
+
+
+
+
+
+
+
+
+
+    function showDialog() {
+            document.getElementById('signInDialog').classList.add('active');
+            const topbar = document.getElementById('headerr');
+            topbar.style.visibility = 'collapsed';
+        }
+
+        function hideDialog() {
+            document.getElementById('signInDialog').classList.remove('active');
+            const topbar = document.getElementById('headerr');
+            topbar.style.visibility = 'visible';
+        }
+
+
+        
+    function showDialog2() {
+            document.getElementById('repolicyDialog').classList.add('active');
+            const topbar2 = document.getElementById('headerr');
+            topbar2.style.visibility = 'collapsed';
+        }
+
+        function hideDialog2() {
+            document.getElementById('repolicyDialog').classList.remove('active');
+            const topbar2 = document.getElementById('headerr');
+            topbar2.style.visibility = 'visible';
+        }
+
+
+
+        function showDialog3() {
+            document.getElementById('couponDialog').classList.add('active');
+            const topbar3 = document.getElementById('headerr');
+            topbar3.style.visibility = 'collapsed';
+        }
+
+        function hideDialog3() {
+            document.getElementById('couponDialog').classList.remove('active');
+            const topbar3 = document.getElementById('headerr');
+            topbar3.style.visibility = 'visible';
+        }
+</script>
+
+</body>
+</html>

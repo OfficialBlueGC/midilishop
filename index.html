@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midili.eg | An Egypitan Cloth Brand</title>
+    <link rel="icon" href="img/logo.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            padding: 15px 20px;
+            color: black;
+            display: flex;
+            background-color: white;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+            mix-blend-mode: multiply;
+            transform: translateX(7px);
+        }
+
+        .brand img{
+            width: 50px;
+            scale: 1.5;
+        }
+        .brand i {
+            margin-right: 10px;
+            font-size: 1.8em;
+            color: #ff9900;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            padding: 10px 20px;
+            transition:  0.25s ease-out;
+        }
+        nav a:hover{
+            color: #ff9900;
+        }
+
+        nav a::after {
+            content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff9900;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .icons i {
+            color: black;
+            margin: 0 10px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .icons i:hover {
+            color: #ff9900;
+        }
+
+        .search-bar {
+            border: 1px solid rgba(0, 0, 0, 0.39);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .search-bar input {
+            background: none;
+            border: none;
+            padding: 5px 10px;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #ff9900;
+            border: none;
+            padding: 7px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #111;
+            transition: background 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #ffc107;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .product-info p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .product-info button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #33333300;
+            border: 1px solid #ff9900;
+            color: black;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            width: 100%;
+        }
+
+        .product-info button:hover {
+            background-color: #ff9900;
+        }
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .footer .column {
+            padding: 10px;
+            min-width: 200px;
+        }
+
+        .footer .column h3 {
+            border-bottom: 1px solid #77777700;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .link {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            text-align: left;
+            transition: 0.2s ease-in-out;
+            border-left: 1px solid rgba(255, 255, 255, 0);
+        }
+
+        .link:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+            border-left: 3px solid #00fff2;
+        }
+
+        .link span{
+            margin-left: 0px;
+            transition: 0.2s ease-in-out;
+            color: white;
+        }
+
+        .link:hover span{
+            margin-left: 8px;
+            color: #00fff2;
+        }
+
+        .footer .brand {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: center;
+        }
+
+        .footer .brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .footer .social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .social2{
+            transition: 0.2s ease-in;
+        }
+
+        .social2:hover{
+            scale: 1.1;
+        }
+
+        .footer .social img {
+            height: 30px;
+            margin: 0 10px;
+        }
+
+        .footer .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            .brand {
+                margin-bottom: 10px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 0.9em;
+            }
+
+            .search-bar input {
+                width: 150px;
+            }
+        }
+
+        .tstbtn{
+            padding: 20px;
+            color: red;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="img/logo.PNG">
+        </div>
+
+        <nav>
+            <a href="#">Newly Added</a>
+            <a href="#">Flash Deals</a>
+            <a href="#">Products</a>
+            <a href="#">Sale</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Blog</a>
+        </nav>
+
+        <div class="icons">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <i class="fas fa-user"></i>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="product">
+            <img src="img/tshirthustle.jpg" alt="Product 1">
+            <div class="product-info">
+                <h2>Product 1</h2>
+                <p>$29.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/400x400" alt="Product 2">
+            <div class="product-info">
+                <h2>Product 2</h2>
+                <p>$39.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/400x400" alt="Product 3">
+            <div class="product-info">
+                <h2>Product 3</h2>
+                <p>$49.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <a class="tstbtn" href="adminconsole.html">Admin Console</a>
+    <a class="tstbtn" href="productview.html">Product View</a>
+
+
+    
+    <div class="footer">
+        <div class="container">
+            <div class="column brand">
+                <img src="img/BGC.png" alt="Brand Icon">
+                <h1>Blue GC</h1>
+            </div>
+            <div class="column">
+                <h3>Get Privee</h3>
+                <a href="pplay.html" class="link"><span>PasterPlay Store (Beta)</span></a>
+                <a href="#" class="link"><span>Playstation</span></a>
+                <a href="#" class="link"><span>Xbox</span></a>
+            </div>
+            <div class="column">
+                <h3>Blue GC</h3>
+                <a href="#" class="link"><span>About us</span></a>
+                <a href="#" class="link"><span>Games</span></a>
+                <a href="#" class="link"><span>Contact us</span></a>
+            </div>
+            <div class="column">
+                <h3>Support</h3>
+                <a href="#" class="link"><span>Support</span></a>
+                <a href="#" class="link"><span>Playtest</span></a>
+                <a href="#" class="link"><span>Privacy Policy</span></a>
+                <a href="#" class="link"><span>Terms of Use</span></a>
+                <a href="#" class="link"><span>Fan-Created Content</span></a>
+            </div>
+        </div>
+        <div class="column social">
+            <a href="#" class="social2"><img src="img/insta.png" alt="Instagram"></a>
+            <a href="discord.gg/jZ3p2FntzB" class="social2"><img src="img/discord.png" alt="Discord"></a>
+            <a href="youtube.com/@priveegame?si=pP0lBSdcNaYqLUy0" class="social2"><img src="img/Youtube.png" alt="YouTube"></a>
+        </div>
+        <div class="copyright">
+            &copy; 2019 - 2024 Blue GC. MIDILI.EG is not a trademark or a product made by Blue GC. All Rights Reserved
+        </div>
+    </div>
+
+</body>
+</html>

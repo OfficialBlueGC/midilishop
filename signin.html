@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        ::selection{
+            background-color: black;
+            color: white;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 2rem;
+            border-top: 6px solid #ff9900;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 93%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .login-container input[type="email"]:focus,
+        .login-container input[type="password"]:focus {
+            border-color: #ff9900;
+            box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+            outline: none;
+        }
+
+        .sub, .otr {
+            background-color: #ff9900;
+            color: #fff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .otr{
+            margin-top: 10px;
+            background-color: transparent;
+            color: black;
+            border: 1px solid rgb(202, 202, 202);
+        }
+
+        .otr:hover{
+            background-color: rgb(236, 236, 236);
+        }
+
+        .sub:hover {
+            background-color: #e68a00;
+        }
+
+        .login-container button:active {
+            transform: scale(0.98);
+        }
+
+        .login-container p {
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        /* Additional animations */
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .sub {
+            animation: slideIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(10px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <img src="img/logo.PNG" style="width: 70px; scale: 2; user-select: none;">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit" class="sub">Login</button>
+        <button type="submit" class="otr">Login with Blue GC</button>
+        <p id="error" style="display: none; color: red;">Please fill in both fields.</p>
+    </form>
+    <p style="margin: 0; margin-top: 20px;">Powered by: Blue GC Accounts</p>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const error = document.getElementById('error');
+
+        if (email === '' || password === '') {
+            error.style.display = 'block';
+        } else {
+            error.style.display = 'none';
+            alert('Login successful!');
+        }
+    });
+</script>
+
+</body>
+</html>
